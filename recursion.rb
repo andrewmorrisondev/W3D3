@@ -12,5 +12,12 @@ end
 # p range_i(12, 5) # => []
 
 def range_r(start_n, end_n)
-  return 
+  return [start_n] if start_n == end_n - 1
+  return [] if end_n < start_n
+  arr = []
+  arr += [start_n] + range_r(start_n + 1, end_n)
 end
+
+p range_r(1, 3) # => [1, 2]
+p range_r(5, 10) # => [5, 6, 7, 8, 9]
+p range_r(12, 5) # => []
