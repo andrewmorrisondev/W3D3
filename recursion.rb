@@ -66,15 +66,54 @@ def fib_r(n)
   prev_fib << prev_fib[-1] + prev_fib[-2]
 end
 
-p fib_r(4)  # => [0, 1, 1, 2]
-p "______________________"
-p fib_r(2)  # => [0, 1]
-p "______________________"
-p fib_r(10) # => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+# p fib_r(4)  # => [0, 1, 1, 2]
+# p "______________________"
+# p fib_r(2)  # => [0, 1]
+# p "______________________"
+# p fib_r(10) # => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
  
 
 
 
 def fib_i(n)
+  fib_start = [0,1]
+
+  while fib_start.length < n 
+    fib_start << fib_start[-1] + fib_start[-2]
+  end
+  fib_start
 
 end
+
+
+# p fib_i(4)  # => [0, 1, 1, 2]
+# p "______________________"
+# p fib_i(2)  # => [0, 1]
+# p "______________________"
+# p fib_i(10) # => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+
+
+def bsearch(arr, target)
+  middle_ele = arr[arr.length/2]
+  # return index_of?(middle_ele) if index_of?(middle_ele) == target
+  operation = arr.index(middle_ele) <=> target
+  return arr.index(middle_ele) if operation == 0
+
+  if operation == -1
+    bsearch(arr...middle_ele, target)
+  elsif operation == 1
+    bsearch(middle_ele..arr[-1])
+  end
+
+end
+
+
+
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
