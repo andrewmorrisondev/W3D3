@@ -42,27 +42,39 @@ class Array
       else
         val = ele.deep_dup
         new_arr << val
-      end
-      
+      end      
     end
-
-    # self.each_with_index do |ele, index|
-    #   if !ele.is_a?(Array)
-    #     val = self[index]
-    #     new_arr << val
-    #   else
-    #     ele.deep_dup
-    #   end
-    # end
     new_arr
   end
 end
 
-robot_parts = [["nuts", "bolts", "washers"],["tool", ['bulb']]]
+# robot_parts = [["nuts", "bolts", "washers"],["tool", ['bulb']]]
 
-robot_parts_copy = robot_parts.deep_dup
+# robot_parts_copy = robot_parts.deep_dup
 
-robot_parts_copy << "LEDs"
+# robot_parts_copy << "LEDs"
 
-p robot_parts
-p robot_parts_copy
+# p robot_parts
+# p robot_parts_copy
+
+
+# 0 1 1 2 3 5 8 13 21 34
+
+def fib_r(n)
+  return [0,1].take(n) if n <= 2
+  prev_fib = fib_r(n - 1)
+  prev_fib << prev_fib[-1] + prev_fib[-2]
+end
+
+p fib_r(4)  # => [0, 1, 1, 2]
+p "______________________"
+p fib_r(2)  # => [0, 1]
+p "______________________"
+p fib_r(10) # => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+ 
+
+
+
+def fib_i(n)
+
+end
