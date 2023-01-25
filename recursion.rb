@@ -30,9 +30,9 @@ end
 
 
 def deep_dup(arr)
-    return arr if arr.all? {|ele| ele.length == 0}
+  return arr if arr.all? {|ele| ele.length == 0}
 
-    out_arr = []
+  out_arr = []
 
     
   arr.each do |ele|
@@ -45,3 +45,22 @@ arr = [[1,2],[3,4]]
 deep_dup([[1,2],[3,4]])
 deep_dup([[],[]]) # => This will output exactly what is put in
 
+class Array
+  def dup
+    arr = []
+
+    self.each do |ele|
+      arr << ele + "asd"
+    end
+
+  end
+end
+
+robot_parts = ["nuts", "bolts", "washers"]
+
+robot_parts_copy = robot_parts.dup
+
+robot_parts_copy << "LEDs"
+
+p robot_parts
+p robot_parts_copy
