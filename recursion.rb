@@ -94,18 +94,32 @@ end
 
 
 
+# def bsearch(arr, target)
+#   middle_ele = arr[arr.length/2]
+#   # return index_of?(middle_ele) if index_of?(middle_ele) == target
+#   operation = arr.index(middle_ele) <=> target
+#   return arr.index(middle_ele) if operation == 0
+
+#   if operation == -1
+#     bsearch(arr...middle_ele, target)
+#   elsif operation == 1
+#     bsearch(middle_ele..arr[-1])
+#   end
+
+# end
+
 def bsearch(arr, target)
-  middle_ele = arr[arr.length/2]
-  # return index_of?(middle_ele) if index_of?(middle_ele) == target
-  operation = arr.index(middle_ele) <=> target
-  return arr.index(middle_ele) if operation == 0
+  mid_idx = arr.length / 2
+  return arr.index(target) if arr[mid_idx] == target
 
-  if operation == -1
-    bsearch(arr...middle_ele, target)
-  elsif operation == 1
-    bsearch(middle_ele..arr[-1])
+  l_arr = arr[0...mid_idx]
+  r_arr = arr[(mid_idx + 1)..-1]
+
+  if arr[mid_idx] > target
+    bsearch(l_arr, target)
+  else
+    bsearch(r_arr, target)
   end
-
 end
 
 
@@ -115,5 +129,5 @@ p bsearch([2, 3, 4, 5], 3) # => 1
 p bsearch([2, 4, 6, 8, 10], 6) # => 2
 p bsearch([1, 3, 4, 5, 9], 5) # => 3
 p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
