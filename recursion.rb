@@ -108,8 +108,10 @@ end
 
 # end
 
+
 def bsearch(arr, target)
   mid_idx = arr.length / 2
+  return nil if !arr.include?(target)
   return arr.index(target) if arr[mid_idx] == target
 
   l_arr = arr[0...mid_idx]
@@ -118,10 +120,31 @@ def bsearch(arr, target)
   if arr[mid_idx] > target
     bsearch(l_arr, target)
   else
-    bsearch(r_arr, target)
+    mid_idx += bsearch(r_arr, target) + 1
   end
 end
 
+
+
+
+
+
+
+# def bsearch(arr, target)
+#   mid_idx = arr.length / 2
+#   return arr.index(target) if arr[mid_idx] == target
+
+#   l_arr = arr[0...mid_idx]
+#   r_arr = arr[(mid_idx + 1)..-1]
+
+#   if arr[mid_idx] > target
+#     val = bsearch(l_arr, target)
+#   else
+#     bsearch(r_arr, target)
+#   end
+
+
+# end
 
 
 p bsearch([1, 2, 3], 1) # => 0
@@ -129,5 +152,5 @@ p bsearch([2, 3, 4, 5], 3) # => 1
 p bsearch([2, 4, 6, 8, 10], 6) # => 2
 p bsearch([1, 3, 4, 5, 9], 5) # => 3
 p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
